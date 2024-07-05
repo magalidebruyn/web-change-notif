@@ -1,8 +1,8 @@
 # Webpages monitoring + email notification
 
-This project combines a simple Python script, a .env file with variable specifications (for "secrets" like emails and passwords), and a cron job (a local time-based task for the computer) to monitor a webpage or multiple webpages in one go, at regular time intervals. If a change in  content is noted, the script sends an email to (and from) the specified email addresses. (Note: We could adapt this script to send a text instead of - or in addition to - an email!) 
+This project combines a simple Python script, a .env file with variable specifications (for "secrets" like emails and passwords), and a cron job (a local time-based task for the computer) to monitor a webpage or multiple webpages in one go, at regular time intervals. If a change in  content is noted, the script sends an email to (and from) the specified email addresses. (Note: We could adapt this code to send a text instead of - or in addition to - an email!) 
 
-Currently, this project monitors the UC Berkeley Philosophy department webpage for Fall 2024 courses, in addition to one specific Graduate Seminar course listing webpage, in order to track when information on these pages are updated (notably with the topics for the Graduate Seminars). It runs once a day - every 24 hours - this can be adapted as per the needs.
+Currently, the script monitors the UC Berkeley Philosophy department webpage for Fall 2024 courses, in addition to one specific Graduate Seminar course listing webpage, in order to track when information on these pages are updated (notably with the topics for the Graduate Seminars). It runs once a day - every 24 hours - this can be adapted as per the needs.
 
 ### Requirements
 - Python install. Download here: https://www.python.org/downloads.
@@ -32,7 +32,7 @@ To run this script as a cron job (a task your machine does at regular intervals 
 9. To save & exit (using the default text editor - vim - likely used to open up your crontab file in the terminal): press the `esc` key, then type `:x`, and that should save the file (at least on a Mac). Based on your computer's operating system and your (default) terminal text editor, you might have to use different commands; if the aforementioned doesn't work try `Ctrl + X` to exit, then `Y` to confirm changes, and `Enter` to save. If that still doesn't work: good ol' Google.
 10. Verify that the cron job has been added correctly by typing into the terminal: `crontab -l`. If it shows the line we just wrote: yay - the script is up and running! Now we just gotta wait for that email :)  
 
-### Adapt this script
+### Adapt this code
 Check out `web_monitor.py` to change the URL(s) being monitored, the email subject, the text in the body, etc.
 
 ### Notes
