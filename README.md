@@ -1,4 +1,4 @@
-# Webpages monitoring + email notification
+# Webpage(s) monitoring + email notification
 
 This project combines a simple Python script, a .env file with variable specifications (for "secrets" like emails and passwords), and a cron job (a local time-based task for the computer) to monitor a webpage or multiple webpages in one go, at regular time intervals. If a change in  content is noted, the script sends an email to (and from) the specified email addresses. (Note: We could adapt this code to send a text instead of - or in addition to - an email!) 
 
@@ -25,7 +25,7 @@ To run this script as a cron job (a task your machine does at regular intervals 
 
 6. In the terminal, type: `crontab -e`. This opens up the crontab file.
 7. Add a line (and a new job) to the crontab file with your Python script path: `0 12 * * 1-6 /usr/bin/python3 /path/to/your/web_monitor.py` (update this with your info! e.g. `0 12 * * 1-6 /usr/bin/python3 /GitHub/web-change-notif/web_monitor.py`).
-    - 0 12 * * * means the script will run at the 0th minute, the 12th hour (noon), every day of the month, every month, Monday through Saturday.
+    - 0 12 * * 1-6 means the script will run at the 0th minute, the 12th hour (noon), every month, Monday through Saturday.
     - /usr/bin/python3 is the path to the Python interpreter.
     - /path/to/your/script.py is the path to your Python script. Update this!
 8. (Optional) note: I appreciate saving the log output and errors produced by the cron job to an accessible local logfile (instead of it being sent to the system mail). To do so, instead of the above, adapt and add ` >> /path/to/logfile.log 2>&1` to the crontab file line so that it becomes: `0 12 * * 1-6 /usr/bin/python3 /path/to/your/web_monitor.py >> /path/to/logfile.log 2>&1` e.g. `0 12 * * 1-6 /usr/bin/python3 /GitHub/web-change-notif/web_monitor.py >> /GitHub/web-change-notif/logfile.log 2>&1`.
