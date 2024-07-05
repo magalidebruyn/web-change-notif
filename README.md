@@ -36,4 +36,4 @@ To run this script as a cron job (a task your machine does at regular intervals 
 Contributions very welcome!   
 CC0 (Creative Commons Zero: use this code as you wish)
 
-\*  App-specific passwords is a new safety requirement for Google accounts since Sep 30, 2024. For dev rabbit-holing, see: https://stackoverflow.com/questions/16512592/login-credentials-not-working-with-gmail-smtp.
+\*  App-specific passwords (temporarily) work around new safety requirements for Google accounts. For dev rabbit-holing, see: https://stackoverflow.com/questions/16512592/login-credentials-not-working-with-gmail-smtp.
