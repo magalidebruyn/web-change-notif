@@ -11,8 +11,8 @@ load_dotenv()
 
 # Configuration
 urls = ['https://philosophy.berkeley.edu/courses/term/98', 'https://philosophy.berkeley.edu/courses/detail/1708']
-# Update these URLs as needed - given preference
-# Make sure to adapt the .env file and its environmental variables EMAIL_FROM, EMAIL_TO, SMTP_USERNAME, SMTP_PASSWORD
+# Update these URLs as needed/given preference
+# Make sure to adapt the .env file (the values for the environmental variables EMAIL_FROM, EMAIL_TO, SMTP_USERNAME, SMTP_PASSWORD)
 email_from = os.getenv("EMAIL_FROM")  
 email_to = os.getenv("EMAIL_TO")
 email_subject = "Philosophy Graduate Seminars details are up!" # Update based on the subject
@@ -20,7 +20,7 @@ smtp_server = "smtp.gmail.com" # Update based on email provider
 smtp_port = 587
 smtp_username = os.getenv("SMTP_USERNAME") 
 smtp_password = os.getenv("SMTP_PASSWORD")
-# Create a user agent to reduce chances of being detected as a bot by the website and blocked
+# Create a user agent to reduce chances of being detected as a bot by the website + being blocked
 headers = {'User-Agent': 'Mozilla/5.0'}
 
 def get_content_hash(url: str):
@@ -73,7 +73,8 @@ def main():
     # Compare the previous content with the current content
     # Send email notification if it differs
     if current_hash != previous_hash:
-        send_email(email_subject, f"The content in the following webpage(s) has changed: {', '.join(urls)}")
+        email_body = f"The content in the following webpage(s) has changed: {', '.join(urls)}"
+        send_email(email_subject, email_body)
         try:
             with open('hash.txt', 'w') as file:
                 file.write(current_hash)

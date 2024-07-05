@@ -32,7 +32,13 @@ To run this script as a cron job (a task your machine does at regular intervals 
 9. To save & exit (using the default text editor - vim - likely used to open up your crontab file in the terminal): press the `esc` key, then type `:x`, and that should save the file (at least on a Mac). Based on your computer's operating system and your (default) terminal text editor, you might have to use different commands; if the aforementioned doesn't work try `Ctrl + X` to exit, then `Y` to confirm changes, and `Enter` to save. If that still doesn't work: good ol' Google.
 10. Verify that the cron job has been added correctly by typing into the terminal: `crontab -l`. If it shows the line we just wrote: yay - the script is up and running! Now we just gotta wait for that email :)  
 
+### Adapt this script
+Check out `web_monitor.py` to change the URL(s) being monitored, the email subject, the text in the body, etc.
+
 ### Notes
+
+The very first time this script is run, it'll send out an email. You can ignore it - it doesn't mean the content has changed - but is a good confirmation that the script is running successfully.
+
 Contributions very welcome!   
 CC0 (Creative Commons Zero: use this code as you wish)
 
