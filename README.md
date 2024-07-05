@@ -2,7 +2,7 @@
 
 This project combines a simple Python script, a .env file with variable specifications (for "secrets" like emails and passwords), and a cron job (a local time-based task for the computer) to monitor a webpage or multiple webpages in one go, at regular time intervals. If a change in  content is noted, the script sends an email to (and from) the specified email addresses. (Note: We could adapt this code to send a text instead of - or in addition to - an email!) 
 
-Currently, the script monitors the UC Berkeley Philosophy department webpage for Fall 2024 courses, in addition to one specific Graduate Seminar course listing webpage, in order to track when information on these pages are updated (notably with the topics for the Graduate Seminars). It runs once a day - every 24 hours - this can be adapted as per the needs.
+Currently, the script monitors the UC Berkeley Philosophy department webpage for Fall 2024 courses, in addition to one specific Graduate Seminar course listing webpage, in order to track when information on these pages is updated (notably with the topics for the Graduate Seminars). It runs once a day - every 24 hours - this can be adapted as per the needs.
 
 ### Requirements
 - Python install. Download here: https://www.python.org/downloads.
