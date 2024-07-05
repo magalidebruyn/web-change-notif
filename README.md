@@ -14,10 +14,10 @@ Currently, the script monitors the UC Berkeley Philosophy department webpage for
 
 ### How to get this to run on your computer
 1. Make sure you've got all the requirements above checked off. 
-2. Clone this project locally using git: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository.
+2. Clone this project locally using git. https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository.
 3. Install relevant dependencies (libraries) / create a virtual environment from the requirements.txt file. 
-    - To do so, you can run in your terminal: `pip install -r requirements.txt`. If you don't want to clutter your base environment (i.e. if you don't want to install a bunch of sh*t on your computer – highly recommended), create a vritual environment first through venv (comes with recent Python versions), mamba, or conda. For venv, type into the terminal `virtualenv venv` to create your new environment (called 'venv' here); then type `source venv/bin/activate` to enter the virtual environment; and finally `pip install -r requirements.txt.`
-4. Create an app-specific password to access email* via this script: https://myaccount.google.com/apppasswords.
+    - To do so, you can run in your terminal: `pip install -r requirements.txt`. If you don't want to clutter your base environment (i.e. if you don't want to install a bunch of sh*t on your computer – highly recommended), create a virtual environment first through venv (comes with recent Python versions), mamba, or conda. For venv, type into the terminal `virtualenv venv` to create your new environment (called 'venv' here); then type `source venv/bin/activate` to enter the virtual environment; and finally `pip install -r requirements.txt.`
+4. Create an app-specific password to access email* via this script. https://myaccount.google.com/apppasswords.
 5. Update the example.env file with the appropriate information (email addresses and the above password). 
     - Once updated, change the name of the file to `.env` (this file is set to not be tracked via the `.gitignore` – if you're using GitHub).
 
@@ -30,10 +30,10 @@ To run this script as a cron job (a task your machine does at regular intervals 
     - /path/to/your/script.py is the path to your Python script. Update this!
 8. (Optional) note: I appreciate saving the log output and errors produced by the cron job to an accessible local logfile (instead of it being sent to the system mail). To do so, instead of the above, adapt and add ` >> /path/to/logfile.log 2>&1` to the crontab file line so that it becomes: `0 12 * * 1-6 /usr/bin/python3 /path/to/your/web_monitor.py >> /path/to/logfile.log 2>&1` e.g. `0 12 * * 1-6 /usr/bin/python3 /GitHub/web-change-notif/web_monitor.py >> /GitHub/web-change-notif/logfile.log 2>&1`.
 9. To save & exit (using the default text editor - vim - likely used to open up your crontab file in the terminal): press the `esc` key, then type `:x`, and that should save the file (at least on a Mac). Based on your computer's operating system and your (default) terminal text editor, you might have to use different commands; if the aforementioned doesn't work try `Ctrl + X` to exit, then `Y` to confirm changes, and `Enter` to save. If that still doesn't work: good ol' Google.
-10. Verify that the cron job has been added correctly by typing into the terminal: `crontab -l`. If it shows the line we just wrote: yay - the script is up and running! Now we just gotta wait for that email :)  
+10. Verify that the cron job has been added correctly by typing into the terminal: `crontab -l`. If it shows the line we just wrote: yay - the script is up and running! Now we just gotta wait for that email.  
 
 ### Adapt this code
-Check out `web_monitor.py` to change the URL(s) being monitored, the email subject, the text in the body, etc.
+Check out the `web_monitor.py` file to change the URL(s) being monitored, the email subject, the text in the body, etc.
 
 ### Notes
 
