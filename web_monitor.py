@@ -1,8 +1,9 @@
 import os
 import requests
-from dotenv import load_dotenv
 import hashlib
 import smtplib
+from bs4 import BeautifulSoup
+from dotenv import load_dotenv
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -23,18 +24,32 @@ smtp_password = os.getenv("SMTP_PASSWORD")
 # Create a user agent to reduce chances of being detected as a bot by the website + being blocked
 headers = {'User-Agent': 'Mozilla/5.0'}
 
+
 def get_content_hash(url: str):
     """
     Get the content hash of a webpage.
     """
     try:
         response = requests.get(url, headers=headers)
-        response.raise_for_status()  # Raises an HTTPError if the response status code is 4XX/5XX
-        content = response.content
-        return hashlib.md5(content).hexdigest()
+        response.raise_for_status()  # Raises an HTTPError if the response status code is 4XX/5XX        
+        html_content = response.text
     except requests.RequestException as e:
-        print(f"Error fetching URL {url}: {e}")
+        print(f"Error fetching URL {url} content: {e}")
         return None
+    try:
+        # Get the HMTL content as a soup object
+        soup = BeautifulSoup(html_content, 'html.parser')
+        # Remove script or style elements (Javascript/CSS style content that's dynamic)
+        for script_or_style in soup(["script", "style"]):
+            script_or_style.decompose()
+        # Reconvert to text - only the text content of the webpage
+        cleaned_text = soup.get_text()
+        # Hash
+        hash_object = hashlib.md5(cleaned_text.encode())
+        return hash_object.hexdigest()  
+    except Exception as e:
+        print(f"Error parsing HTML content into hash: {e}")
+        return None  
 
 def send_email(subject: str, body: str):
     """
