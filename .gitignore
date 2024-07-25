@@ -1,4 +1,5 @@
 .env
-hash.txt
-logfile.log
+cron.log
 .DS_Store
+hash.txt
+
