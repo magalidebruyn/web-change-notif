@@ -2,6 +2,7 @@ import os
 import requests
 import hashlib
 import smtplib
+from datetime import datetime
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from email.mime.text import MIMEText
@@ -79,7 +80,7 @@ def main():
     current_hash = ''
     # Get the current webpage(s) content/hash for each url
     for url in urls:
-        print(f"Retrieving url content from: {url}")
+        print(f"{datetime.now()}: Retrieving url content from: {url}")
         hash_result = get_content_hash(url)
         if hash_result:
             current_hash += hash_result
@@ -89,6 +90,7 @@ def main():
     # Send email notification if it differs
     if current_hash != previous_hash:
         email_body = f"The content in the following webpage(s) has changed: {', '.join(urls)}"
+        print(f"{datetime.now()}: The content in the following webpage(s) has changed: {', '.join(urls)}")
         send_email(email_subject, email_body)
         try:
             with open('hash.txt', 'w') as file:
